@@ -19,12 +19,4 @@ from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import include, path
 
-
-def test_view(request):
-    return JsonResponse({"message": "Django REST Framework is working!"})
-
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("api/test/", test_view),
-]
+urlpatterns = []

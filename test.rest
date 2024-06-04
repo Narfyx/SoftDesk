@@ -1,0 +1,51 @@
+### Inscription d'un utilisateur
+POST http://127.0.0.1:8000/api/register/
+Content-Type: application/json
+
+{
+  "username": "tutu",
+  "password": "ComplexPassword123!",
+  "email": "tutu@tutu.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Authentification d'un utilisateur pour obtenir le token JWT
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+  "username": "tutu",
+  "password": "ComplexPassword123!"
+}
+
+### Rafraîchissement du token JWT (remplacer <refresh_token> par le token réel)
+POST http://127.0.0.1:8000/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "<refresh_token>"
+}
+
+### Récupérer les détails de l'utilisateur (remplacer <access_token> par le token réel)
+GET http://127.0.0.1:8000/api/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NTI3MjczLCJpYXQiOjE3MTc1MjM2NzMsImp0aSI6ImIxYTE2MzNkZDA1ZDQ3NDRhYmFiMmY1M2JhOThiOWQxIiwidXNlcl9pZCI6Mn0.fu77tiDNXfCIjX_ibDzsyd7jM2a0joTSiBZ0fdcq-PU
+
+### Mettre à jour les détails de l'utilisateur (remplacer <access_token> par le token réel)
+PUT http://127.0.0.1:8000/api/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NTI3MjczLCJpYXQiOjE3MTc1MjM2NzMsImp0aSI6ImIxYTE2MzNkZDA1ZDQ3NDRhYmFiMmY1M2JhOThiOWQxIiwidXNlcl9pZCI6Mn0.fu77tiDNXfCIjX_ibDzsyd7jM2a0joTSiBZ0fdcq-PU
+Content-Type: application/json
+
+{
+  "username": "new_tutu",
+  "password": "NewComplexPassword123!",
+  "email": "tutu@tutu.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": true
+}
+
+### Supprimer l'utilisateur (remplacer <access_token> par le token réel)
+DELETE http://127.0.0.1:8000/api/me/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NTI3MjczLCJpYXQiOjE3MTc1MjM2NzMsImp0aSI6ImIxYTE2MzNkZDA1ZDQ3NDRhYmFiMmY1M2JhOThiOWQxIiwidXNlcl9pZCI6Mn0.fu77tiDNXfCIjX_ibDzsyd7jM2a0joTSiBZ0fdcq-PU

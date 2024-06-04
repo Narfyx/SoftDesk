@@ -1,0 +1,4 @@
+test_api.py
+.venv/
+.git/
+src/db.sqlite3

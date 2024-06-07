@@ -51,20 +51,27 @@ DELETE http://127.0.0.1:8000/user/me/
 Authorization: Bearer <access_token>
 
 ### Créer un projet (remplacer <access_token> par le token réel)
-POST http://127.0.0.1:8000/project/projects/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NzQyNTI5LCJpYXQiOjE3MTc3Mzg5MjksImp0aSI6IjYwN2I2ZjcxZWUxODRhNzY4ZTAwMzQ4YmYyYjEyNzUwIiwidXNlcl9pZCI6NH0.ZHJddPcSusYWdcptCqw1_s1OQBSriG4KAox3_2Ty7f4
+POST  http://127.0.0.1:8000/project/create/
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NzQyNTI5LCJpYXQiOjE3MTc3Mzg5MjksImp0aSI6IjYwN2I2ZjcxZWUxODRhNzY4ZTAwMzQ4YmYyYjEyNzUwIiwidXNlcl9pZCI6NH0.ZHJddPcSusYWdcptCqw1_s1OQBSriG4KAox3_2Ty7f4
 Content-Type: application/json
 
 {
-  "name": "New New Project",
-  "description": "Project Description",
-  "type": "BACK_END",
-  "author": 4
+  "id": 1,
+  "name": "newtest",
+  "description": "test",
+  "type_project": "BACK_END",
+  "author": 1
 }
+### 
+GET  http://127.0.0.1:8000/project/projects/
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NzQyNTI5LCJpYXQiOjE3MTc3Mzg5MjksImp0aSI6IjYwN2I2ZjcxZWUxODRhNzY4ZTAwMzQ4YmYyYjEyNzUwIiwidXNlcl9pZCI6NH0.ZHJddPcSusYWdcptCqw1_s1OQBSriG4KAox3_2Ty7f4
+#Content-Type: application/json
+
 
 ### Récupérer la liste des projets (remplacer <access_token> par le token réel)
 GET http://127.0.0.1:8000/project/projects/
-Authorization: Bearer <access_token>
+Autho
+ization: Bearer <access_token>
 
 ### Récupérer les détails d'un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
 GET http://127.0.0.1:8000/project/projects/<project_id>/

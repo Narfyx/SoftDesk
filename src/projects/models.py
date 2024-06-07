@@ -21,6 +21,25 @@ class Project(models.Model):
         on_delete=models.CASCADE,
         related_name="authored_projects",
     )
+    contributors = models.ManyToManyField(
+        to=settings.AUTH_USER_MODEL,
+        through="Contributor",
+        related_name="project_contributors",
+    )
 
     def __str__(self):
         return self.name
+
+
+class Contributor(models.Model):
+    user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    project = models.ForeignKey(to=Project, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user
+
+
+@receiver(post_save, sender=Project)
+def project_created(sender, instance, created, **kwargs):
+    if created:  # Only add the author as a contributor if it's a new project
+        Contributor.objects.create(user=instance.author, project=instance)

@@ -1,27 +1,27 @@
 ### Inscription d'un utilisateur
-POST http://127.0.0.1:8000/api/register/
+POST http://127.0.0.1:8000/user/register/
 Content-Type: application/json
 
 {
-  "username": "tutu",
+  "username": "tata",
   "password": "ComplexPassword123!",
-  "email": "tutu@tutu.fr",
+  "email": "tata@tata.fr",
   "birth_date": "2000-01-01",
   "can_be_contacted": true,
   "can_data_be_shared": false
 }
 
 ### Authentification d'un utilisateur pour obtenir le token JWT
-POST http://127.0.0.1:8000/api/token/
+POST http://127.0.0.1:8000/user/token/
 Content-Type: application/json
 
 {
-  "username": "tutu",
+  "username": "tata",
   "password": "ComplexPassword123!"
 }
 
 ### Rafraîchissement du token JWT (remplacer <refresh_token> par le token réel)
-POST http://127.0.0.1:8000/api/token/refresh/
+POST http://127.0.0.1:8000/user/token/refresh/
 Content-Type: application/json
 
 {
@@ -29,23 +29,72 @@ Content-Type: application/json
 }
 
 ### Récupérer les détails de l'utilisateur (remplacer <access_token> par le token réel)
-GET http://127.0.0.1:8000/api/me/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NTI3MjczLCJpYXQiOjE3MTc1MjM2NzMsImp0aSI6ImIxYTE2MzNkZDA1ZDQ3NDRhYmFiMmY1M2JhOThiOWQxIiwidXNlcl9pZCI6Mn0.fu77tiDNXfCIjX_ibDzsyd7jM2a0joTSiBZ0fdcq-PU
+GET http://127.0.0.1:8000/user/me/
+Authorization: Bearer <access_token>
 
 ### Mettre à jour les détails de l'utilisateur (remplacer <access_token> par le token réel)
-PUT http://127.0.0.1:8000/api/me/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NTI3MjczLCJpYXQiOjE3MTc1MjM2NzMsImp0aSI6ImIxYTE2MzNkZDA1ZDQ3NDRhYmFiMmY1M2JhOThiOWQxIiwidXNlcl9pZCI6Mn0.fu77tiDNXfCIjX_ibDzsyd7jM2a0joTSiBZ0fdcq-PU
+PUT http://127.0.0.1:8000/user/me/
+Authorization: Bearer <access_token>
 Content-Type: application/json
 
 {
-  "username": "new_tutu",
+  "username": "new_tata",
   "password": "NewComplexPassword123!",
-  "email": "tutu@tutu.fr",
+  "email": "tata@tata.fr",
   "birth_date": "2000-01-01",
   "can_be_contacted": true,
   "can_data_be_shared": true
 }
 
 ### Supprimer l'utilisateur (remplacer <access_token> par le token réel)
-DELETE http://127.0.0.1:8000/api/me/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NTI3MjczLCJpYXQiOjE3MTc1MjM2NzMsImp0aSI6ImIxYTE2MzNkZDA1ZDQ3NDRhYmFiMmY1M2JhOThiOWQxIiwidXNlcl9pZCI6Mn0.fu77tiDNXfCIjX_ibDzsyd7jM2a0joTSiBZ0fdcq-PU
+DELETE http://127.0.0.1:8000/user/me/
+Authorization: Bearer <access_token>
+
+### Créer un projet (remplacer <access_token> par le token réel)
+POST http://127.0.0.1:8000/project/projects/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NzQyNTI5LCJpYXQiOjE3MTc3Mzg5MjksImp0aSI6IjYwN2I2ZjcxZWUxODRhNzY4ZTAwMzQ4YmYyYjEyNzUwIiwidXNlcl9pZCI6NH0.ZHJddPcSusYWdcptCqw1_s1OQBSriG4KAox3_2Ty7f4
+Content-Type: application/json
+
+{
+  "name": "New New Project",
+  "description": "Project Description",
+  "type": "BACK_END",
+  "author": 4
+}
+
+### Récupérer la liste des projets (remplacer <access_token> par le token réel)
+GET http://127.0.0.1:8000/project/projects/
+Authorization: Bearer <access_token>
+
+### Récupérer les détails d'un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
+GET http://127.0.0.1:8000/project/projects/<project_id>/
+Authorization: Bearer <access_token>
+
+### Mettre à jour un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
+PUT http://127.0.0.1:8000/project/projects/<project_id>/
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "name": "Updated Project Name",
+  "description": "Updated Project Description",
+  "type": "FRONT_END"
+}
+
+### Supprimer un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
+DELETE http://127.0.0.1:8000/project/projects/<project_id>/
+Authorization: Bearer <access_token>
+
+### Ajouter un contributeur à un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
+POST http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer <access_token>
+Content-Type: application/json
+
+{
+  "user": "<user_id>",
+  "project": "<project_id>"
+}
+
+### Récupérer la liste des contributeurs (remplacer <access_token> par le token réel)
+GET http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer <access_token>

@@ -1,13 +1,23 @@
 from django.urls import path
 
-from .views import ContributorViewSet, ProjectCreate, ProjectViewSet
+from .views import (
+    ContributorIndexViewSet,
+    ProjectCreate,
+    ProjectIndexViewSet,
+    ProjectViewSet,
+)
 
 urlpatterns = [
     path("create/", ProjectCreate.as_view(), name="project-create"),
-    path("projects/", ProjectViewSet.as_view({"get": "list"}), name="project-list"),
+    path(
+        "all/",
+        ProjectViewSet.as_view({"get": "list"}),
+        name="project-list",
+    ),
+    path("<int:pk>/", ProjectIndexViewSet.as_view(), name="project"),
     path(
         "contributors/",
-        ContributorViewSet.as_view({"get": "list"}),
-        name="contributors-list",
+        ContributorIndexViewSet.as_view(),
+        name="project-contributors",
     ),
 ]

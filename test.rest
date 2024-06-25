@@ -1,107 +1,220 @@
+### ====================================== USERS ====================================== OK!
 ### Inscription d'un utilisateur
 POST http://127.0.0.1:8000/user/register/
 Content-Type: application/json
 
 {
-  "username": "tata",
+  "username": "toto",
   "password": "ComplexPassword123!",
   "email": "tata@tata.fr",
   "birth_date": "2000-01-01",
   "can_be_contacted": true,
   "can_data_be_shared": false
 }
-
 ### Authentification d'un utilisateur pour obtenir le token JWT
-POST http://127.0.0.1:8000/user/token/
+POST http://127.0.0.1:8000/user/1/token/
 Content-Type: application/json
 
 {
-  "username": "tata",
+  "username": "toto",
   "password": "ComplexPassword123!"
 }
-
 ### Rafraîchissement du token JWT (remplacer <refresh_token> par le token réel)
-POST http://127.0.0.1:8000/user/token/refresh/
+POST http://127.0.0.1:8000/user/1/token-refresh/
 Content-Type: application/json
 
 {
-  "refresh": "<refresh_token>"
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxODQ1OTA1MCwiaWF0IjoxNzE4MzcyNjUwLCJqdGkiOiIzZjllY2VlMzIyYmQ0ZDcxOWE2NjgzYmVjZTVmYjAyNSIsInVzZXJfaWQiOjF9.veZ4eeq4r7qtxHedUT_TmdpMkKT0ej_Xnml1f7tvotA"
 }
-
 ### Récupérer les détails de l'utilisateur (remplacer <access_token> par le token réel)
-GET http://127.0.0.1:8000/user/me/
-Authorization: Bearer <access_token>
-
+GET http://127.0.0.1:8000/user/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4Mzc2Mzg3LCJpYXQiOjE3MTgzNzI2NTAsImp0aSI6ImZiNjkxZTNmYTM2MDQwZGE5MmQxMDZhOTdjZTgwMzc4IiwidXNlcl9pZCI6MX0.kEfTeMTKh7r72stkuacQ0vvFJUQYnCdFQM-HFYgE-Fc
 ### Mettre à jour les détails de l'utilisateur (remplacer <access_token> par le token réel)
-PUT http://127.0.0.1:8000/user/me/
-Authorization: Bearer <access_token>
+PUT http://127.0.0.1:8000/user/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4Mzc2Mzg3LCJpYXQiOjE3MTgzNzI2NTAsImp0aSI6ImZiNjkxZTNmYTM2MDQwZGE5MmQxMDZhOTdjZTgwMzc4IiwidXNlcl9pZCI6MX0.kEfTeMTKh7r72stkuacQ0vvFJUQYnCdFQM-HFYgE-Fc
 Content-Type: application/json
 
 {
   "username": "new_tata",
-  "password": "NewComplexPassword123!",
+  "password": "Azerty12345*",
   "email": "tata@tata.fr",
   "birth_date": "2000-01-01",
   "can_be_contacted": true,
   "can_data_be_shared": true
 }
-
 ### Supprimer l'utilisateur (remplacer <access_token> par le token réel)
-DELETE http://127.0.0.1:8000/user/me/
-Authorization: Bearer <access_token>
+DELETE http://127.0.0.1:8000/user/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4Mzc2Mzg3LCJpYXQiOjE3MTgzNzI2NTAsImp0aSI6ImZiNjkxZTNmYTM2MDQwZGE5MmQxMDZhOTdjZTgwMzc4IiwidXNlcl9pZCI6MX0.kEfTeMTKh7r72stkuacQ0vvFJUQYnCdFQM-HFYgE-Fc
+### ===================================================================================
 
+
+
+
+
+
+
+
+
+
+
+
+### ===================================== PROJECT =====================================
 ### Créer un projet (remplacer <access_token> par le token réel)
-POST  http://127.0.0.1:8000/project/create/
-#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NzQyNTI5LCJpYXQiOjE3MTc3Mzg5MjksImp0aSI6IjYwN2I2ZjcxZWUxODRhNzY4ZTAwMzQ4YmYyYjEyNzUwIiwidXNlcl9pZCI6NH0.ZHJddPcSusYWdcptCqw1_s1OQBSriG4KAox3_2Ty7f4
+POST http://127.0.0.1:8000/project/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTg0NzY2LCJpYXQiOjE3MTg5ODExNjYsImp0aSI6ImFmMDkwNTNjMjI0ODQ5NzBhZDEyNjQ1OWY2OWJhYWQxIiwidXNlcl9pZCI6NH0.R-6igmlFWwgUo2U9wUZU0uZ2RJSCGZlekFW2jXuzeR8
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "newtest",
-  "description": "test",
-  "type_project": "BACK_END",
-  "author": 1
+  "name": "test3",
+  "description": "Project",
+  "type_project": "FRONT_END"
 }
-### 
-GET  http://127.0.0.1:8000/project/projects/
-#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3NzQyNTI5LCJpYXQiOjE3MTc3Mzg5MjksImp0aSI6IjYwN2I2ZjcxZWUxODRhNzY4ZTAwMzQ4YmYyYjEyNzUwIiwidXNlcl9pZCI6NH0.ZHJddPcSusYWdcptCqw1_s1OQBSriG4KAox3_2Ty7f4
-#Content-Type: application/json
-
-
+### ============================== OK!
 ### Récupérer la liste des projets (remplacer <access_token> par le token réel)
-GET http://127.0.0.1:8000/project/projects/
-Autho
-ization: Bearer <access_token>
-
+GET http://127.0.0.1:8000/project/all/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTg0NzY2LCJpYXQiOjE3MTg5ODExNjYsImp0aSI6ImFmMDkwNTNjMjI0ODQ5NzBhZDEyNjQ1OWY2OWJhYWQxIiwidXNlcl9pZCI6NH0.R-6igmlFWwgUo2U9wUZU0uZ2RJSCGZlekFW2jXuzeR8
+### ============================== OK!
 ### Récupérer les détails d'un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
-GET http://127.0.0.1:8000/project/projects/<project_id>/
-Authorization: Bearer <access_token>
-
+GET http://127.0.0.1:8000/project/5/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NzIxMTk4LCJpYXQiOjE3MTg3MTc1OTgsImp0aSI6IjgyNTEzZmVjMmMwODQ2ZWE4YWFmZDBlOWIxYWM2N2I5IiwidXNlcl9pZCI6NH0.c8mS_AEY68tDmLOH68R5Xp6qWFh9lXnFPJk0Lj8wz1o
+### ============================== OK!
 ### Mettre à jour un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
-PUT http://127.0.0.1:8000/project/projects/<project_id>/
-Authorization: Bearer <access_token>
+PUT http://127.0.0.1:8000/project/5/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NzIxMTk4LCJpYXQiOjE3MTg3MTc1OTgsImp0aSI6IjgyNTEzZmVjMmMwODQ2ZWE4YWFmZDBlOWIxYWM2N2I5IiwidXNlcl9pZCI6NH0.c8mS_AEY68tDmLOH68R5Xp6qWFh9lXnFPJk0Lj8wz1o
 Content-Type: application/json
 
 {
   "name": "Updated Project Name",
   "description": "Updated Project Description",
-  "type": "FRONT_END"
+  "type_project": "FRONT_END"
 }
-
+### ============================== OK!
 ### Supprimer un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
-DELETE http://127.0.0.1:8000/project/projects/<project_id>/
-Authorization: Bearer <access_token>
-
+DELETE http://127.0.0.1:8000/project/2/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTg0NzY2LCJpYXQiOjE3MTg5ODExNjYsImp0aSI6ImFmMDkwNTNjMjI0ODQ5NzBhZDEyNjQ1OWY2OWJhYWQxIiwidXNlcl9pZCI6NH0.R-6igmlFWwgUo2U9wUZU0uZ2RJSCGZlekFW2jXuzeR8
+### ============================== OK!
 ### Ajouter un contributeur à un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
-POST http://127.0.0.1:8000/project/contributors/
-Authorization: Bearer <access_token>
+PUT http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTg0NzY2LCJpYXQiOjE3MTg5ODExNjYsImp0aSI6ImFmMDkwNTNjMjI0ODQ5NzBhZDEyNjQ1OWY2OWJhYWQxIiwidXNlcl9pZCI6NH0.R-6igmlFWwgUo2U9wUZU0uZ2RJSCGZlekFW2jXuzeR8
 Content-Type: application/json
 
 {
-  "user": "<user_id>",
-  "project": "<project_id>"
+  "user": 2,
+  "project": 7
 }
+### ============================== OK! 
+DELETE http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTg0NzY2LCJpYXQiOjE3MTg5ODExNjYsImp0aSI6ImFmMDkwNTNjMjI0ODQ5NzBhZDEyNjQ1OWY2OWJhYWQxIiwidXNlcl9pZCI6NH0.R-6igmlFWwgUo2U9wUZU0uZ2RJSCGZlekFW2jXuzeR8
+Content-Type: application/json
 
-### Récupérer la liste des contributeurs (remplacer <access_token> par le token réel)
-GET http://127.0.0.1:8000/project/contributors/
-Authorization: Bearer <access_token>
+{
+  "user": 2,
+  "project": 7
+}
+### ============================== OK!
+### ===================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+### ===================================== ISSUES ======================================
+### Créer une issue (remplacer <access_token> par le token réel)
+POST http://127.0.0.1:8000/issues/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTg4NDAzLCJpYXQiOjE3MTg5ODQ4MDMsImp0aSI6IjQ5MWRkYzE0ZjFlODQ5ZGE5ZmFjMjAwYWI2ZGMwNDlkIiwidXNlcl9pZCI6NH0.QP9H2Xb3cSTMJvixbEwAqC3vgQp_oZY8OdW8UVD9UeI
+Content-Type: application/json
+
+{
+  "title": "New Issue",
+  "description": "Issue Description",
+  "priority": "HIGH",
+  "tag": "FEATURE",
+  "status": "TODO",
+  "project": 7,
+  "assignee": 4
+}
+### ============================== OK!
+### Récupérer la liste des issues (remplacer <access_token> par le token réel)
+GET http://127.0.0.1:8000/issues/all
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4OTg4NDAzLCJpYXQiOjE3MTg5ODQ4MDMsImp0aSI6IjQ5MWRkYzE0ZjFlODQ5ZGE5ZmFjMjAwYWI2ZGMwNDlkIiwidXNlcl9pZCI6NH0.QP9H2Xb3cSTMJvixbEwAqC3vgQp_oZY8OdW8UVD9UeI
+### ============================== OK!
+### Récupérer les détails d'une issue (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
+GET http://127.0.0.1:8000/issues/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDA2Njk3LCJpYXQiOjE3MTkzMjAyOTcsImp0aSI6IjY2MGRjODdmZjEwMjQ0YzA4YjA0OWI1NjJjNmU4MDE1IiwidXNlcl9pZCI6NH0.gBg5rAlwR5iKz_xXRLqk5LTfdFbq6on3WICdCriT0b0
+### ============================== OK!
+### Mettre à jour une issue (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
+PUT http://127.0.0.1:8000/issues/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDA2Njk3LCJpYXQiOjE3MTkzMjAyOTcsImp0aSI6IjY2MGRjODdmZjEwMjQ0YzA4YjA0OWI1NjJjNmU4MDE1IiwidXNlcl9pZCI6NH0.gBg5rAlwR5iKz_xXRLqk5LTfdFbq6on3WICdCriT0b0
+Content-Type: application/json
+
+{
+  "title": "Updated Issue Title",
+  "description": "Updated Issue Description",
+  "priority": "MEDIUM",
+  "tag": "BUG",
+  "status": "IN_PROGRESS",
+  "project": 7
+}
+### ============================== OK!
+### ===================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+### ===================================== COMMENT ======================================
+### Créer une comment (remplacer <access_token> par le token réel)
+POST http://127.0.0.1:8000/issues/comment/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDA4NTA3LCJpYXQiOjE3MTkzMjIxMDcsImp0aSI6IjA3ZGZkYzU5MjQ1ZjQxMDA5ODlmNzQ4MTk5MzU4YzQwIiwidXNlcl9pZCI6NH0.bZpLuYspRcJFV_VUStnVTVkeoqFqF9l-ny9Il_iPXQE
+Content-Type: application/json
+
+{
+  "issue": 1,
+  "author" : 4,
+  "body" : "test"
+}
+### ============================== OK!
+### Récupérer les détails d'une comment (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
+GET http://127.0.0.1:8000/issues/comment/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDA4NTA3LCJpYXQiOjE3MTkzMjIxMDcsImp0aSI6IjA3ZGZkYzU5MjQ1ZjQxMDA5ODlmNzQ4MTk5MzU4YzQwIiwidXNlcl9pZCI6NH0.bZpLuYspRcJFV_VUStnVTVkeoqFqF9l-ny9Il_iPXQE
+### ============================== OK!
+### Mettre à jour une comment (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
+PUT http://127.0.0.1:8000/issues/comment/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDA2Njk3LCJpYXQiOjE3MTkzMjAyOTcsImp0aSI6IjY2MGRjODdmZjEwMjQ0YzA4YjA0OWI1NjJjNmU4MDE1IiwidXNlcl9pZCI6NH0.gBg5rAlwR5iKz_xXRLqk5LTfdFbq6on3WICdCriT0b0
+Content-Type: application/json
+
+{
+  "issue": 1,
+  "author" : 4,
+  "body" : "Hello World!"
+}
+### ============================== OK!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

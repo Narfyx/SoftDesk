@@ -14,7 +14,7 @@ class UserCreate(generics.CreateAPIView):
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
 
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):

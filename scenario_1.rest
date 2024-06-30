@@ -1,0 +1,221 @@
+### tout est OK!
+
+
+
+
+
+### Users :
+### 
+### Inscription de trois utilisateurs : test1, test2 et test3.
+### Authentification des trois utilisateurs pour obtenir leurs tokens JWT.
+### 
+### Projects :
+### 
+### test1 crée un projet.
+### test1 ajoute test2 comme contributeur au projet.
+### 
+### Issues :
+### 
+### test2 crée une issue dans le projet de test1.
+### test1 tente de supprimer l'issue de test2 (devrait être autorisé puisque test1 est l'auteur du projet).
+### test3 tente de récupérer l'issue de test2 sans être contributeur (devrait être refusé).
+### 
+### Comments :
+### 
+### test1 crée un commentaire sur l'issue de test2.
+### test3 tente de créer un commentaire sur l'issue de test2 sans être contributeur (devrait être refusé).
+### test1 ajoute test3 comme contributeur.
+### test3 crée une nouvelle issue.
+### test3 crée un commentaire sur sa propre issue.
+### test3 crée un commentaire sur l'issue de test2 (devrait être autorisé après avoir été ajouté comme contributeur).
+### 
+### User Deletion :
+### 
+### test1 supprime son compte.
+
+### ====================================== USERS ======================================
+
+### Inscription de test1
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "ComplexPassword123!",
+  "email": "test1@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Inscription de test2
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "ComplexPassword123!",
+  "email": "test2@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Inscription de test3
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test3",
+  "password": "ComplexPassword123!",
+  "email": "test3@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Authentification de test1
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "ComplexPassword123!"
+}
+
+### Authentification de test2
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "ComplexPassword123!"
+}
+
+### Authentification de test3
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test3",
+  "password": "ComplexPassword123!"
+}
+
+### ===================================== PROJECT =====================================
+
+### test1 crée un projet
+POST http://127.0.0.1:8000/project/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Content-Type: application/json
+
+{
+  "name": "Project by test1",
+  "description": "Description of project by test1",
+  "type_project": "FRONT_END"
+}
+
+### test1 ajoute test2 comme contributeur
+PUT http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Content-Type: application/json
+
+{
+  "user": 2,
+  "project": 1
+}
+
+### ===================================== ISSUES ======================================
+
+### test2 crée une issue dans le projet de test1
+POST http://127.0.0.1:8000/project/issue/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjY2LCJpYXQiOjE3MTk3MTg4NjYsImp0aSI6ImFlNTAxZDcyZWIzMDQ0ZGM5ODlhMmViNzgxZDFkMGY4IiwidXNlcl9pZCI6Mn0.aeIQt23X4rUa3N-w1_zPjuDEOGPZtb4og_iEIx5m-aM
+Content-Type: application/json
+
+{
+  "title": "Issue by test2",
+  "description": "Description of issue by test2",
+  "priority": "HIGH",
+  "tag": "FEATURE",
+  "status": "TODO",
+  "project": 1,
+  "assignee": 2
+}
+
+### test1 tente de supprimer l'issue de test2
+DELETE http://127.0.0.1:8000/project/issue/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+
+### test3 tente de récupérer l'issue de test2 sans être contributeur
+GET http://127.0.0.1:8000/project/issue/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjgxLCJpYXQiOjE3MTk3MTg4ODEsImp0aSI6IjA1ZGYyNzNjNWJhZDQ5YTRhNjM4NTBmM2Q1YmE1NTVlIiwidXNlcl9pZCI6M30.NL0qyEZhfBZIhVlTWNP5-zm38rKBuqZlSE22GqWKq9U
+
+### ===================================== COMMENTS ======================================
+
+### test1 crée un commentaire sur l'issue de test2
+POST http://127.0.0.1:8000/project/comment/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Content-Type: application/json
+
+{
+  "issue": 1,
+  "body" : "Comment by test1 on issue by test2"
+}
+
+### test3 tente de créer un commentaire sur l'issue de test2 sans être contributeur
+POST http://127.0.0.1:8000/project/comment/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjgxLCJpYXQiOjE3MTk3MTg4ODEsImp0aSI6IjA1ZGYyNzNjNWJhZDQ5YTRhNjM4NTBmM2Q1YmE1NTVlIiwidXNlcl9pZCI6M30.NL0qyEZhfBZIhVlTWNP5-zm38rKBuqZlSE22GqWKq9U
+Content-Type: application/json
+
+{
+  "issue": 1,
+  "body" : "Comment by test3 on issue by test2"
+}
+
+### test1 ajoute test3 comme contributeur
+PUT http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Content-Type: application/json
+
+{
+  "user": 3,
+  "project": 1
+}
+
+### test3 crée une nouvelle issue
+POST http://127.0.0.1:8000/project/issue/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjgxLCJpYXQiOjE3MTk3MTg4ODEsImp0aSI6IjA1ZGYyNzNjNWJhZDQ5YTRhNjM4NTBmM2Q1YmE1NTVlIiwidXNlcl9pZCI6M30.NL0qyEZhfBZIhVlTWNP5-zm38rKBuqZlSE22GqWKq9U
+Content-Type: application/json
+
+{
+  "title": "Issue by test3",
+  "description": "Description of issue by test3",
+  "priority": "MEDIUM",
+  "tag": "BUG",
+  "status": "IN_PROGRESS",
+  "project": 1,
+  "assignee": 3
+}
+
+### test3 crée un commentaire sur sa propre issue
+POST http://127.0.0.1:8000/project/comment/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjgxLCJpYXQiOjE3MTk3MTg4ODEsImp0aSI6IjA1ZGYyNzNjNWJhZDQ5YTRhNjM4NTBmM2Q1YmE1NTVlIiwidXNlcl9pZCI6M30.NL0qyEZhfBZIhVlTWNP5-zm38rKBuqZlSE22GqWKq9U
+Content-Type: application/json
+
+{
+  "issue": 2,
+  "body" : "Comment by test3 on their own issue"
+}
+
+### test3 crée un commentaire sur l'issue de test2
+POST http://127.0.0.1:8000/project/comment/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjgxLCJpYXQiOjE3MTk3MTg4ODEsImp0aSI6IjA1ZGYyNzNjNWJhZDQ5YTRhNjM4NTBmM2Q1YmE1NTVlIiwidXNlcl9pZCI6M30.NL0qyEZhfBZIhVlTWNP5-zm38rKBuqZlSE22GqWKq9U
+Content-Type: application/json
+
+{
+  "issue": 1,
+  "body" : "Comment by test3 on issue by test2"
+}
+
+### test1 supprime son compte
+DELETE http://127.0.0.1:8000/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE

@@ -1,0 +1,159 @@
+### Inscription de test5
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test5",
+  "password": "ComplexPassword123!",
+  "email": "test5@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Inscription de test6
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test6",
+  "password": "ComplexPassword123!",
+  "email": "test6@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Inscription de test7
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test7",
+  "password": "ComplexPassword123!",
+  "email": "test7@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Authentification de test5
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test5",
+  "password": "ComplexPassword123!"
+}
+
+### Authentification de test6
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test6",
+  "password": "ComplexPassword123!"
+}
+
+### Authentification de test7
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test7",
+  "password": "ComplexPassword123!"
+}
+
+### ===================================== PROJECT =====================================
+
+### test5 crée un projet
+POST http://127.0.0.1:8000/project/create/
+Authorization: Bearer <access_token_test5>
+Content-Type: application/json
+
+{
+  "name": "Project by test5",
+  "description": "Description of project by test5",
+  "type_project": "FRONT_END"
+}
+
+### test5 ajoute test6 comme contributeur
+PUT http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer <access_token_test5>
+Content-Type: application/json
+
+{
+  "user": 6,
+  "project": 1
+}
+
+### test5 ajoute test7 comme contributeur
+PUT http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer <access_token_test5>
+Content-Type: application/json
+
+{
+  "user": 7,
+  "project": 1
+}
+
+### test6 tente de modifier le projet de test5
+PUT http://127.0.0.1:8000/project/1/
+Authorization: Bearer <access_token_test6>
+Content-Type: application/json
+
+{
+  "name": "Modified Project by test6",
+  "description": "Modified Description of project by test6",
+  "type_project": "BACK_END"
+}
+
+### test6 tente de supprimer le projet de test5
+DELETE http://127.0.0.1:8000/project/1/
+Authorization: Bearer <access_token_test6>
+
+### ===================================== ISSUES ======================================
+
+### test6 crée une issue dans le projet de test5
+POST http://127.0.0.1:8000/project/issue/create/
+Authorization: Bearer <access_token_test6>
+Content-Type: application/json
+
+{
+  "title": "Issue by test6",
+  "description": "Description of issue by test6",
+  "priority": "HIGH",
+  "tag": "FEATURE",
+  "status": "TODO",
+  "project": 1,
+  "assignee": 6
+}
+
+### test5 tente de supprimer l'issue de test6
+DELETE http://127.0.0.1:8000/project/issue/1/
+Authorization: Bearer <access_token_test5>
+
+### ===================================== COMMENTS ======================================
+
+### test7 crée un commentaire sur l'issue de test6
+POST http://127.0.0.1:8000/project/comment/create/
+Authorization: Bearer <access_token_test7>
+Content-Type: application/json
+
+{
+  "issue": 1,
+  "body" : "Comment by test7 on issue by test6"
+}
+
+### test5 tente de modifier le commentaire de test7
+PATCH http://127.0.0.1:8000/project/comment/1/
+Authorization: Bearer <access_token_test5>
+Content-Type: application/json
+
+{
+  "body" : "Modified Comment by test5 on comment by test7"
+}
+
+### test6 supprime son issue
+DELETE http://127.0.0.1:8000/project/issue/1/
+Authorization: Bearer <access_token_test6>

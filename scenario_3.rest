@@ -1,0 +1,106 @@
+### Inscription de test8
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test8",
+  "password": "ComplexPassword123!",
+  "email": "test8@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Inscription de test9
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test9",
+  "password": "ComplexPassword123!",
+  "email": "test9@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Authentification de test8
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test8",
+  "password": "ComplexPassword123!"
+}
+
+### Authentification de test9
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test9",
+  "password": "ComplexPassword123!"
+}
+
+### ===================================== PROJECT =====================================
+
+### test8 crée un projet
+POST http://127.0.0.1:8000/project/create/
+Authorization: Bearer <access_token_test8>
+Content-Type: application/json
+
+{
+  "name": "Project by test8",
+  "description": "Description of project by test8",
+  "type_project": "FRONT_END"
+}
+
+### test8 ajoute test9 comme contributeur
+PUT http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer <access_token_test8>
+Content-Type: application/json
+
+{
+  "user": 9,
+  "project": 1
+}
+
+### ===================================== ISSUES ======================================
+
+### test9 crée une issue dans le projet de test8
+POST http://127.0.0.1:8000/project/issue/create/
+Authorization: Bearer <access_token_test9>
+Content-Type: application/json
+
+{
+  "title": "Issue by test9",
+  "description": "Description of issue by test9",
+  "priority": "HIGH",
+  "tag": "FEATURE",
+  "status": "TODO",
+  "project": 1,
+  "assignee": 9
+}
+
+### test8 crée un commentaire sur l'issue de test9
+POST http://127.0.0.1:8000/project/comment/create/
+Authorization: Bearer <access_token_test8>
+Content-Type: application/json
+
+{
+  "issue": 1,
+  "body" : "Comment by test8 on issue by test9"
+}
+
+### test9 met à jour l'issue
+PATCH http://127.0.0.1:8000/project/issue/1/
+Authorization: Bearer <access_token_test9>
+Content-Type: application/json
+
+{
+  "title": "Updated Issue by test9"
+}
+
+### test8 supprime le commentaire sur l'issue de test9
+DELETE http://127.0.0.1:8000/project/comment/1/
+Authorization: Bearer <access_token_test8>

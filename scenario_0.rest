@@ -1,0 +1,60 @@
+### tout est OK!
+
+
+
+
+
+### Inscription de test4
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test4",
+  "password": "ComplexPassword123!",
+  "email": "test4@test.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+
+### Authentification de test4
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test4",
+  "password": "ComplexPassword123!"
+}
+
+### Utilisez le token JWT retourné dans la réponse de la requête d'authentification
+
+### Récupérer les détails de test4
+GET http://127.0.0.1:8000/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA2NjIwLCJpYXQiOjE3MTk3MjAyMjAsImp0aSI6ImYyNjY4M2EwZjhkMjRiYmFhZjg3NDBjMjkxMzNlZDhkIiwidXNlcl9pZCI6NH0.PeT2SosUdAfNuqOptOA7qHCu26TPnVqAItoqsMSPnbc
+
+### Mettre à jour les détails de test4
+PUT http://127.0.0.1:8000/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA2NjIwLCJpYXQiOjE3MTk3MjAyMjAsImp0aSI6ImYyNjY4M2EwZjhkMjRiYmFhZjg3NDBjMjkxMzNlZDhkIiwidXNlcl9pZCI6NH0.PeT2SosUdAfNuqOptOA7qHCu26TPnVqAItoqsMSPnbc
+Content-Type: application/json
+
+{
+  "username": "test4_updated",
+  "password": "NewComplexPassword123!",
+  "email": "test4_updated@test.fr",
+  "birth_date": "1999-12-31",
+  "can_be_contacted": false,
+  "can_data_be_shared": true
+}
+
+### Mettre à jour partiellement les détails de test4
+PATCH http://127.0.0.1:8000/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA2NjIwLCJpYXQiOjE3MTk3MjAyMjAsImp0aSI6ImYyNjY4M2EwZjhkMjRiYmFhZjg3NDBjMjkxMzNlZDhkIiwidXNlcl9pZCI6NH0.PeT2SosUdAfNuqOptOA7qHCu26TPnVqAItoqsMSPnbc
+Content-Type: application/json
+
+{
+  "username": "test4_partial_update"
+}
+
+### Supprimer le compte de test4
+DELETE http://127.0.0.1:8000/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA2NjIwLCJpYXQiOjE3MTk3MjAyMjAsImp0aSI6ImYyNjY4M2EwZjhkMjRiYmFhZjg3NDBjMjkxMzNlZDhkIiwidXNlcl9pZCI6NH0.PeT2SosUdAfNuqOptOA7qHCu26TPnVqAItoqsMSPnbc

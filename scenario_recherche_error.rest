@@ -1,0 +1,257 @@
+### Cas de Figure Testés
+
+
+
+### Users :
+
+### Inscription avec des données invalides (mot de passe trop court, email invalide).
+### Authentification avec un mot de passe incorrect.
+### Rafraîchissement du token avec un token invalide.
+### Accès aux détails de l'utilisateur et suppression sans token.
+
+
+
+### Projects :
+
+### Création d'un projet sans nom.
+### Mise à jour avec un nom trop long.
+### Suppression sans token.
+### Ajout d'un contributeur à un projet inexistant.
+### Suppression d'un contributeur sans token.
+
+
+
+### Issues :
+
+### Création d'une issue sans titre.
+### Accès à une issue inexistante.
+### Mise à jour avec des données invalides.
+### Suppression sans token.
+
+
+
+
+### ====================================== USERS ======================================
+
+### Inscription d'un utilisateur avec un mot de passe trop court
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test6",
+  "password": "short",
+  "email": "short@short.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+### ============================================================= OK!
+### Inscription d'un utilisateur avec un email invalide
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test7",
+  "password": "ComplexPassword123!",
+  "email": "invalidemail",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+### ============================================================= OK!
+### Inscription d'un utilisateur avec un âge inférieur à 15 ans
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "ComplexPassword123!",
+  "email": "short@short.fr",
+  "birth_date": "2020-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+### ============================================================= OK!
+### Inscription d'un utilisateur
+POST http://127.0.0.1:8000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "ComplexPassword123!",
+  "email": "short@short.fr",
+  "birth_date": "2000-01-01",
+  "can_be_contacted": true,
+  "can_data_be_shared": false
+}
+### ============================================================= OK!
+### Authentification avec un mot de passe incorrect
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "WrongPassword!"
+}
+### ============================================================= OK!
+### Authentification avec un mot de passe correct
+POST http://127.0.0.1:8000/user/token/
+Content-Type: application/json
+
+{
+  "username": "test2",
+  "password": "ComplexPassword123!"
+}
+### ============================================================= OK!
+### Rafraîchissement du token JWT avec un token invalide
+POST http://127.0.0.1:8000/user/token-refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyMDMyMTkzMiwiaWF0IjoxNzE5NzE3MTMyLCJqdGkiOiI5MDdkNGY0YzJiZWQ0Njg5YWM0NWEyYzUyNGExMjYyMCIsInVzZXJfaWQiOjF9.TgJyKu0eR4Q61WlV2l-2A_AQumxtSSyDKXErmJBWVYU"
+}
+### ============================================================= OK!
+### Récupérer les détails de l'utilisateur sans token
+GET http://127.0.0.1:8000/user/
+### ============================================================= OK!
+### Supprimer l'utilisateur sans token
+DELETE http://127.0.0.1:8000/user/
+### ============================================================= OK!
+### ===================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+### ===================================== PROJECT =====================================
+
+### Créer un projet sans nom (remplacer <access_token> par le token réel)
+POST http://127.0.0.1:8000/project/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+Content-Type: application/json
+
+{
+  "description": "Project without a name",
+  "type_project": "FRONT_END"
+}
+### ============================================================= OK!
+### Création à jour un projet
+POST http://127.0.0.1:8000/project/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+Content-Type: application/json
+
+{
+  "name": "test",
+  "description": "Updated Project Description",
+  "type_project": "FRONT_END"
+}
+### Mettre à jour un projet avec un nom trop long (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
+PATCH http://127.0.0.1:8000/project/2/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+Content-Type: application/json
+
+{
+  "name": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}
+### ============================================================= OK!
+### Supprimer un projet sans token
+DELETE http://127.0.0.1:8000/project/2/
+### ============================================================= OK!
+### Ajouter un contributeur à un projet inexistant (remplacer <access_token> par le token réel)
+PUT http://127.0.0.1:8000/project/contributors/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+Content-Type: application/json
+
+{
+  "user": 2,
+  "project": 99999
+}
+### ============================================================= OK!
+### Supprimer un contributeur sans token
+DELETE http://127.0.0.1:8000/project/contributors/
+Content-Type: application/json
+
+{
+  "user": 1,
+  "project": 2
+}
+### ============================================================= OK!
+### ===================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+### ===================================== ISSUES ======================================
+
+### Créer une issue sans titre (remplacer <access_token> par le token réel)
+POST http://127.0.0.1:8000/project/issue/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+Content-Type: application/json
+
+{
+  "description": "Issue Description without a title",
+  "priority": "HIGH",
+  "tag": "FEATURE",
+  "status": "TODO",
+  "project": 1,
+  "assignee": 2
+}
+### ============================================================= OK!
+### Récupérer une issue inexistante (remplacer <access_token> par le token réel et <issue_id> par un ID inexistant)
+GET http://127.0.0.1:8000/project/issue/99999/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+
+### Mettre à jour une issue avec des données invalides (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
+POST http://127.0.0.1:8000/project/issue/create/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+Content-Type: application/json
+
+{
+  "title": "test",
+  "description": "Issue Description without a title",
+  "priority": "HIGH",
+  "tag": "FEATURE",
+  "status": "TODO",
+  "project": 2,
+  "assignee": 1
+}
+###
+PUT http://127.0.0.1:8000/project/issue/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODAzNTMyLCJpYXQiOjE3MTk3MTcxMzIsImp0aSI6ImYyOGI0MTFjYTNiNjQ3NTQ4NTJiOWNkMzIzYTU0N2JiIiwidXNlcl9pZCI6MX0.pwn_xF9qHvIDOcerxGJUKEnBlkMOSYjrckCoXOdZO3k
+Content-Type: application/json
+
+{
+  "title": "",
+  "description": "",
+  "priority": "INVALID_PRIORITY",
+  "tag": "INVALID_TAG",
+  "status": "INVALID_STATUS",
+  "project": 1
+}
+### ============================================================= OK!
+### Supprimer une issue sans token (remplacer <issue_id> par l'ID de l'issue)
+DELETE http://127.0.0.1:8000/project/issue/1/
+### ============================================================= OK!
+### ===================================================================================
+
+
+
+
+
+
+

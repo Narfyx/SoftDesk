@@ -46,7 +46,7 @@ Content-Type: application/json
 
 ### test8 crée un projet
 POST http://127.0.0.1:8000/project/create/
-Authorization: Bearer <access_token_test8>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODEyMTYzLCJpYXQiOjE3MTk3MjU3NjMsImp0aSI6IjUzNTM4ZDZhMDA3ZDQwNGJhOWE5MDk2OWQ3YjQzNjlkIiwidXNlcl9pZCI6MX0.bCRoaPAj0Nk2Bp4viL9-3LqKdyzphetfpgjoPM7MAv8
 Content-Type: application/json
 
 {
@@ -57,11 +57,11 @@ Content-Type: application/json
 
 ### test8 ajoute test9 comme contributeur
 PUT http://127.0.0.1:8000/project/contributors/
-Authorization: Bearer <access_token_test8>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODEyMTYzLCJpYXQiOjE3MTk3MjU3NjMsImp0aSI6IjUzNTM4ZDZhMDA3ZDQwNGJhOWE5MDk2OWQ3YjQzNjlkIiwidXNlcl9pZCI6MX0.bCRoaPAj0Nk2Bp4viL9-3LqKdyzphetfpgjoPM7MAv8
 Content-Type: application/json
 
 {
-  "user": 9,
+  "user": 2,
   "project": 1
 }
 
@@ -69,7 +69,7 @@ Content-Type: application/json
 
 ### test9 crée une issue dans le projet de test8
 POST http://127.0.0.1:8000/project/issue/create/
-Authorization: Bearer <access_token_test9>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODEyMTczLCJpYXQiOjE3MTk3MjU3NzMsImp0aSI6IjE0YmUxMjhkMDdmNDQ5MjdiNzc0MjU0NjkxNmEyZjI3IiwidXNlcl9pZCI6Mn0.Sm5W2NzjKXTlkOVAXLliDzsXMuU5q_ezCbI0cHfzX4A
 Content-Type: application/json
 
 {
@@ -79,12 +79,12 @@ Content-Type: application/json
   "tag": "FEATURE",
   "status": "TODO",
   "project": 1,
-  "assignee": 9
+  "assignee": 2
 }
 
 ### test8 crée un commentaire sur l'issue de test9
 POST http://127.0.0.1:8000/project/comment/create/
-Authorization: Bearer <access_token_test8>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODEyMTYzLCJpYXQiOjE3MTk3MjU3NjMsImp0aSI6IjUzNTM4ZDZhMDA3ZDQwNGJhOWE5MDk2OWQ3YjQzNjlkIiwidXNlcl9pZCI6MX0.bCRoaPAj0Nk2Bp4viL9-3LqKdyzphetfpgjoPM7MAv8
 Content-Type: application/json
 
 {
@@ -94,7 +94,7 @@ Content-Type: application/json
 
 ### test9 met à jour l'issue
 PATCH http://127.0.0.1:8000/project/issue/1/
-Authorization: Bearer <access_token_test9>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODEyMTczLCJpYXQiOjE3MTk3MjU3NzMsImp0aSI6IjE0YmUxMjhkMDdmNDQ5MjdiNzc0MjU0NjkxNmEyZjI3IiwidXNlcl9pZCI6Mn0.Sm5W2NzjKXTlkOVAXLliDzsXMuU5q_ezCbI0cHfzX4A
 Content-Type: application/json
 
 {
@@ -103,4 +103,4 @@ Content-Type: application/json
 
 ### test8 supprime le commentaire sur l'issue de test9
 DELETE http://127.0.0.1:8000/project/comment/1/
-Authorization: Bearer <access_token_test8>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODEyMTYzLCJpYXQiOjE3MTk3MjU3NjMsImp0aSI6IjUzNTM4ZDZhMDA3ZDQwNGJhOWE5MDk2OWQ3YjQzNjlkIiwidXNlcl9pZCI6MX0.bCRoaPAj0Nk2Bp4viL9-3LqKdyzphetfpgjoPM7MAv8

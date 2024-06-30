@@ -68,7 +68,7 @@ Content-Type: application/json
 
 ### test5 crée un projet
 POST http://127.0.0.1:8000/project/create/
-Authorization: Bearer <access_token_test5>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODQ3LCJpYXQiOjE3MTk3MjU0NDcsImp0aSI6IjI1MzQ4MDgzOTVkMjQ2MjY4ZmJhMDU3MjMwNDMwYTg4IiwidXNlcl9pZCI6MX0.9967pCtbhJp6h3uINo9kZtw2BngPrhtmL67sJDGbudk
 Content-Type: application/json
 
 {
@@ -79,27 +79,27 @@ Content-Type: application/json
 
 ### test5 ajoute test6 comme contributeur
 PUT http://127.0.0.1:8000/project/contributors/
-Authorization: Bearer <access_token_test5>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODQ3LCJpYXQiOjE3MTk3MjU0NDcsImp0aSI6IjI1MzQ4MDgzOTVkMjQ2MjY4ZmJhMDU3MjMwNDMwYTg4IiwidXNlcl9pZCI6MX0.9967pCtbhJp6h3uINo9kZtw2BngPrhtmL67sJDGbudk
 Content-Type: application/json
 
 {
-  "user": 6,
+  "user": 2,
   "project": 1
 }
 
 ### test5 ajoute test7 comme contributeur
 PUT http://127.0.0.1:8000/project/contributors/
-Authorization: Bearer <access_token_test5>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODQ3LCJpYXQiOjE3MTk3MjU0NDcsImp0aSI6IjI1MzQ4MDgzOTVkMjQ2MjY4ZmJhMDU3MjMwNDMwYTg4IiwidXNlcl9pZCI6MX0.9967pCtbhJp6h3uINo9kZtw2BngPrhtmL67sJDGbudk
 Content-Type: application/json
 
 {
-  "user": 7,
+  "user": 3,
   "project": 1
 }
 
 ### test6 tente de modifier le projet de test5
 PUT http://127.0.0.1:8000/project/1/
-Authorization: Bearer <access_token_test6>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODgyLCJpYXQiOjE3MTk3MjU0ODIsImp0aSI6IjZkOGE0NTY1Y2ZiNjRlMjhhYmI3NGNkOGI0ODhmZjcyIiwidXNlcl9pZCI6Mn0.y94QuCthAzgG_lHfUuVuJwk9jA5RiN7l8loljv8_4p8
 Content-Type: application/json
 
 {
@@ -110,13 +110,13 @@ Content-Type: application/json
 
 ### test6 tente de supprimer le projet de test5
 DELETE http://127.0.0.1:8000/project/1/
-Authorization: Bearer <access_token_test6>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODgyLCJpYXQiOjE3MTk3MjU0ODIsImp0aSI6IjZkOGE0NTY1Y2ZiNjRlMjhhYmI3NGNkOGI0ODhmZjcyIiwidXNlcl9pZCI6Mn0.y94QuCthAzgG_lHfUuVuJwk9jA5RiN7l8loljv8_4p8
 
 ### ===================================== ISSUES ======================================
 
 ### test6 crée une issue dans le projet de test5
 POST http://127.0.0.1:8000/project/issue/create/
-Authorization: Bearer <access_token_test6>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODgyLCJpYXQiOjE3MTk3MjU0ODIsImp0aSI6IjZkOGE0NTY1Y2ZiNjRlMjhhYmI3NGNkOGI0ODhmZjcyIiwidXNlcl9pZCI6Mn0.y94QuCthAzgG_lHfUuVuJwk9jA5RiN7l8loljv8_4p8
 Content-Type: application/json
 
 {
@@ -126,18 +126,18 @@ Content-Type: application/json
   "tag": "FEATURE",
   "status": "TODO",
   "project": 1,
-  "assignee": 6
+  "assignee": 2
 }
 
 ### test5 tente de supprimer l'issue de test6
 DELETE http://127.0.0.1:8000/project/issue/1/
-Authorization: Bearer <access_token_test5>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODQ3LCJpYXQiOjE3MTk3MjU0NDcsImp0aSI6IjI1MzQ4MDgzOTVkMjQ2MjY4ZmJhMDU3MjMwNDMwYTg4IiwidXNlcl9pZCI6MX0.9967pCtbhJp6h3uINo9kZtw2BngPrhtmL67sJDGbudk
 
 ### ===================================== COMMENTS ======================================
 
 ### test7 crée un commentaire sur l'issue de test6
 POST http://127.0.0.1:8000/project/comment/create/
-Authorization: Bearer <access_token_test7>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODkzLCJpYXQiOjE3MTk3MjU0OTMsImp0aSI6IjA0MTdiY2Y4NDEzNjRmMGNiMTY3NTczN2Q3YjVkNTU2IiwidXNlcl9pZCI6M30.RxZomraDF3uMUzodKcYoHEZNyKO17hcMCgOnaqvCCn4
 Content-Type: application/json
 
 {
@@ -147,7 +147,7 @@ Content-Type: application/json
 
 ### test5 tente de modifier le commentaire de test7
 PATCH http://127.0.0.1:8000/project/comment/1/
-Authorization: Bearer <access_token_test5>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODQ3LCJpYXQiOjE3MTk3MjU0NDcsImp0aSI6IjI1MzQ4MDgzOTVkMjQ2MjY4ZmJhMDU3MjMwNDMwYTg4IiwidXNlcl9pZCI6MX0.9967pCtbhJp6h3uINo9kZtw2BngPrhtmL67sJDGbudk
 Content-Type: application/json
 
 {
@@ -156,4 +156,4 @@ Content-Type: application/json
 
 ### test6 supprime son issue
 DELETE http://127.0.0.1:8000/project/issue/1/
-Authorization: Bearer <access_token_test6>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODExODgyLCJpYXQiOjE3MTk3MjU0ODIsImp0aSI6IjZkOGE0NTY1Y2ZiNjRlMjhhYmI3NGNkOGI0ODhmZjcyIiwidXNlcl9pZCI6Mn0.y94QuCthAzgG_lHfUuVuJwk9jA5RiN7l8loljv8_4p8

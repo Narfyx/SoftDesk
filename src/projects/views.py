@@ -105,7 +105,6 @@ class ContributorIndexViewSet(APIView):
         return super().get_permissions()
 
     def put(self, request):
-        print("DEMANDE D'UN PUT")
         serializer = ContributorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -113,7 +112,6 @@ class ContributorIndexViewSet(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request):
-        print("DEMANDE D'UN DELETE")
         user_id = request.data.get("user")
         project_id = request.data.get("project")
 

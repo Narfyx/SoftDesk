@@ -43,7 +43,7 @@ Content-Type: application/json
   "username": "test1",
   "password": "ComplexPassword123!",
   "email": "test1@test.fr",
-  "birth_date": "2000-01-01",
+  "birth_date": "2020-01-01",
   "can_be_contacted": true,
   "can_data_be_shared": false
 }
@@ -105,18 +105,18 @@ Content-Type: application/json
 
 ### test1 crée un projet
 POST http://127.0.0.1:8000/project/create/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI5MjM3LCJpYXQiOjE3MTk4NDI4MzcsImp0aSI6IjlhMGMxNzdmNTZhMjQ5MzI4MmEwNDM5OGQ5ZmUyMmI5IiwidXNlcl9pZCI6Mn0.PTridgZ8cbL0J9hXZgBb6-WVExm1UkJ46q0oL7MjGCQ
 Content-Type: application/json
 
 {
-  "name": "Project by test1",
+  "name": "Project by test2",
   "description": "Description of project by test1",
   "type_project": "FRONT_END"
 }
 
 ### test1 ajoute test2 comme contributeur
 PUT http://127.0.0.1:8000/project/contributors/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI5MjIzLCJpYXQiOjE3MTk4NDI4MjMsImp0aSI6ImUwNmRiMzNjNDdkNzQ2Mzg5YzVhODM1NDFjNmVjNjRmIiwidXNlcl9pZCI6MX0.5j7AknL8mqYbw3wU7VjsEfgwrvs5cmfiAaNZ6JeE4vc
 Content-Type: application/json
 
 {
@@ -128,7 +128,7 @@ Content-Type: application/json
 
 ### test2 crée une issue dans le projet de test1
 POST http://127.0.0.1:8000/project/issue/create/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjY2LCJpYXQiOjE3MTk3MTg4NjYsImp0aSI6ImFlNTAxZDcyZWIzMDQ0ZGM5ODlhMmViNzgxZDFkMGY4IiwidXNlcl9pZCI6Mn0.aeIQt23X4rUa3N-w1_zPjuDEOGPZtb4og_iEIx5m-aM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI5MjM3LCJpYXQiOjE3MTk4NDI4MzcsImp0aSI6IjlhMGMxNzdmNTZhMjQ5MzI4MmEwNDM5OGQ5ZmUyMmI5IiwidXNlcl9pZCI6Mn0.PTridgZ8cbL0J9hXZgBb6-WVExm1UkJ46q0oL7MjGCQ
 Content-Type: application/json
 
 {
@@ -143,11 +143,11 @@ Content-Type: application/json
 
 ### test1 tente de supprimer l'issue de test2
 DELETE http://127.0.0.1:8000/project/issue/1/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI5MjIzLCJpYXQiOjE3MTk4NDI4MjMsImp0aSI6ImUwNmRiMzNjNDdkNzQ2Mzg5YzVhODM1NDFjNmVjNjRmIiwidXNlcl9pZCI6MX0.5j7AknL8mqYbw3wU7VjsEfgwrvs5cmfiAaNZ6JeE4vc
 
 ### test3 tente de récupérer l'issue de test2 sans être contributeur
 GET http://127.0.0.1:8000/project/issue/1/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjgxLCJpYXQiOjE3MTk3MTg4ODEsImp0aSI6IjA1ZGYyNzNjNWJhZDQ5YTRhNjM4NTBmM2Q1YmE1NTVlIiwidXNlcl9pZCI6M30.NL0qyEZhfBZIhVlTWNP5-zm38rKBuqZlSE22GqWKq9U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI5MjQ0LCJpYXQiOjE3MTk4NDI4NDQsImp0aSI6ImE5NTIwYmYyY2Y1ZTQyNTQ4YjAxNDgwY2ZlYzI3YjU3IiwidXNlcl9pZCI6M30.zQKjcK0TNw4L6wfaXT3tSYJPg92IUJpBz-AXJTxoX4k
 
 ### ===================================== COMMENTS ======================================
 
@@ -218,4 +218,4 @@ Content-Type: application/json
 
 ### test1 supprime son compte
 DELETE http://127.0.0.1:8000/user/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5ODA1MjU0LCJpYXQiOjE3MTk3MTg4NTQsImp0aSI6IjBkNTM5OWI1ZGJmNTRhZGY4ODgyZDgxN2VlMTAyMmY0IiwidXNlcl9pZCI6MX0.1pWbJCJyCMKQBIPgsUbUKYYZz1Gznyno2erZXJzqoTE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI5MjIzLCJpYXQiOjE3MTk4NDI4MjMsImp0aSI6ImUwNmRiMzNjNDdkNzQ2Mzg5YzVhODM1NDFjNmVjNjRmIiwidXNlcl9pZCI6MX0.5j7AknL8mqYbw3wU7VjsEfgwrvs5cmfiAaNZ6JeE4vc

@@ -3,6 +3,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.pagination import PageNumberPagination
 
 from .models import User
 from .permissions import IsOwner
@@ -66,3 +67,15 @@ class UserDetail(APIView):
 
     def get_object(self):
         return self.request.user
+
+
+class PaginatedShowAllUsers(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        paginator = PageNumberPagination()
+        paginator.page_size = 10
+        users = User.objects.all()
+        result_page = paginator.paginate_queryset(users, request)
+        serializer = ShowAllUsersSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)

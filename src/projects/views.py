@@ -170,7 +170,6 @@ class IssueDetail(APIView):
             issue = Issue.objects.get(pk=issue_pk)
         except Issue.DoesNotExist:
             raise NotFound(detail="Issue not found")
-
         serializer = IssueSerializer(issue)
         return Response(serializer.data)
 

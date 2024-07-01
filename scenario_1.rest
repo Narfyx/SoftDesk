@@ -53,7 +53,7 @@ POST http://127.0.0.1:8000/user/register/
 Content-Type: application/json
 
 {
-  "username": "test2",
+  "username": "test15",
   "password": "ComplexPassword123!",
   "email": "test2@test.fr",
   "birth_date": "2000-01-01",

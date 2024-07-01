@@ -1,6 +1,6 @@
 ### ====================================== USERS ====================================== OK!
 ### Afficher tout les users
-GET http://127.0.0.1:8000/user/all
+GET http://127.0.0.1:8000/user/all/?page=2
 ### Inscription d'un utilisateur
 POST http://127.0.0.1:8000/user/register/
 Content-Type: application/json

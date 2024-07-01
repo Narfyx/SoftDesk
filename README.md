@@ -9,49 +9,13 @@ In this project, you will improve your skills to create a high-performance **RES
 
 This project is an opportunity to implement and secure an API while respecting modern security and data protection standards, such as **OWASP and GDPR** standards as well as **Green Code* best practices. *.
 
-## Requirements
-
-### Venv
--for Windows:
-```powershell
-c:\>python -m venv .venv
-```
--for linux:
-```bash
-python -m venv .venv
-```
-### Source activate
--for windows:
-```powershell
-c:\>.venv\Scripts\activate.bat
-```
--for linux:
+## install requirements
 ```python
-source .venv/bin/activate
+pipenv install
+pipenv shell
 ```
 
-### install requirements
-```python
-pip install -r requirements.txt
-```
-
-If you encounter this error (using Manjaro):
-```python
-error: externally-managed-environment
-
-× This environment is externally managed
-╰─> To install Python packages system-wide, try "pacman -S
-    python-xyz", where xyz is the package you are trying to
-    install.
-
-```
-
-try with this command:
-```python
-pip install -r requirements.txt --break-system-packages
-```
-
-### Start Django server:
+## Start Django server:
 
 Linux/Mac:
 ```bash
@@ -75,14 +39,14 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-### Generate migrations
+## Generate migrations
 
 To create new migrations based on the changes made to the models, run:
 ```bash
 python manage.py makemigrations
 ```
 
-### Apply migrations
+## Apply migrations
 
 To apply the migrations and synchronize the database schema with the defined models, run:
 ```bash
@@ -92,7 +56,7 @@ python manage.py migrate
 
 By combining these sections, you will have a clear and concise explanation of how to use `makemigrations` and `migrate` to manage migrations in Django.
 
-### Features
+## Features
 
 - User registration and authentication
 - Creation and management of projects
@@ -100,11 +64,11 @@ By combining these sections, you will have a clear and concise explanation of ho
 - Creation and management of issues
 - Creation and management of comments
 
-### API Endpoints
+## API Endpoints
 
-#### Users
+### Users
 
-- `GET /user/all`: Show all users
+- `GET /user/all/?page={page_number}`: Show all users
 - `POST /user/register/`: Registration of a new user
 - `POST /user/token/`: Authentication and obtaining a JWT token
 - `POST /user/token-refresh/`: Refreshing the JWT token
@@ -112,10 +76,10 @@ By combining these sections, you will have a clear and concise explanation of ho
 - `PUT /user/`: Update authenticated user details
 - `DELETE /user/`: Delete the authenticated user's account
 
-#### Projects
+### Projects
 
 - `POST /project/create/`: Create a new project
-- `GET /project/all/`: Retrieve the list of projects
+- `GET /project/all/?page={page_number}`: Retrieve the list of projects
 - `GET /project/{project_id}/`: Retrieve project details
 - `PUT /project/{project_id}/`: Update a project
 - `PATCH /project/{project_id}/`: Partially update a project
@@ -123,19 +87,19 @@ By combining these sections, you will have a clear and concise explanation of ho
 - `PUT /project/contributors/`: Add a contributor to a project
 - `DELETE /project/contributors/`: Delete a contributor from a project
 
-#### Issues
+### Issues
 
 - `POST /project/issue/create/`: Create a new issue
-- `GET /project/issue/all`: Retrieve the list of issues
+- `GET /project/issue/all/?page={page_number}`: Retrieve the list of issues
 - `GET /project/issue/{issue_id}/`: Retrieve the details of an issue
 - `PUT /project/issue/{issue_id}/`: Update an issue
 - `PATCH /project/issue/{issue_id}/`: Partially update an issue
 - `DELETE /project/issue/{issue_id}/`: Delete an issue
 
-#### Comments
+### Comments
 
 - `POST /project/comment/create/`: Create a new comment
-- `GET /project/comment/all`: Retrieve the list of comments
+- `GET /project/comment/all/?page={page_number}`: Retrieve the list of comments
 - `GET /project/comment/{comment_id}/`: Retrieve comment details
 - `PATCH /project/comment/{comment_id}/`: Update a comment
 - `DELETE /project/comment/{comment_id}/`: Delete a comment

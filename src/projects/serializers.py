@@ -66,3 +66,24 @@ class CommentDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = "__all__"
+
+
+class ShowAllProjectsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Project
+        fields = ("id", "name", "author")
+
+
+class ShowAllIssueSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Issue
+        fields = ("id", "title", "author")
+
+
+class ShowAllCommentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Comment
+        fields = ("id", "issue", "author")

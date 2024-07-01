@@ -18,7 +18,7 @@ POST http://127.0.0.1:8000/user/token/
 Content-Type: application/json
 
 {
-  "username": "test1",
+  "username": "test8",
   "password": "ComplexPassword123!"
 }
 ### Rafraîchissement du token JWT (remplacer <refresh_token> par le token réel)
@@ -74,7 +74,7 @@ Content-Type: application/json
 ### ============================== OK!
 ### Récupérer la liste des projets (remplacer <access_token> par le token réel)
 GET http://127.0.0.1:8000/project/all/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NzgwMTYwLCJpYXQiOjE3MTk2OTM3NjAsImp0aSI6IjY5MGRmZDU0ZWU4MjRjNTdiNTc3NGMzYjNlOWRmOGYxIiwidXNlcl9pZCI6MX0.yY4v2YK33pcZrQVW3nIWouq-hkLvSkmAfkmsEbVYZs0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTIzOTk3LCJpYXQiOjE3MTk4Mzc1OTcsImp0aSI6IjViY2I4YmY5YmMxMzRmMDY4ODdmYTBiNWNmNWYxYWIyIiwidXNlcl9pZCI6MX0.n_xFi9c7oWcMZX_hXEoUEmcG6UkUBdJzLwOeUtWvjHA
 ### ============================== OK!
 ### Récupérer les détails d'un projet (remplacer <access_token> par le token réel et <project_id> par l'ID du projet)
 GET http://127.0.0.1:8000/project/1/
@@ -154,12 +154,12 @@ Content-Type: application/json
 ### ============================== OK!
 ### Récupérer la liste des issues (remplacer <access_token> par le token réel)
 GET http://127.0.0.1:8000/project/issue/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Nzg3NDgzLCJpYXQiOjE3MTk3MDEwODMsImp0aSI6ImE1NjkxMmU3ZjY5YzQ5MGY5YzZkMTViYjJjYTc1YTAzIiwidXNlcl9pZCI6MX0.N_JnSDHR5QuGRgZxtWa5yowcJV4l4PLn2EuN27iPp70
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI0MTE2LCJpYXQiOjE3MTk4Mzc3MTYsImp0aSI6Ijk3Yjg1NTM1YWM1ZjQ0NjM4NGIyNzdkMDA2NWFjMTY4IiwidXNlcl9pZCI6MX0.yJ89j1y7cWrhZnqfu4isFlShDjj1S4nze7_0Ap1mY1Q
 
 ### ============================== OK!
 ### Récupérer les détails d'une issue (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
-GET http://127.0.0.1:8000/project/issue/2/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Nzg3NDcyLCJpYXQiOjE3MTk3MDEwNzIsImp0aSI6IjUzMmNhZjU0MDJmMjQyY2JhNWQ1M2ExZTY5ZDkyNGEzIiwidXNlcl9pZCI6Mn0.xNO9nGI-pNWpr2jxyKkkn0GxVgkWd-zUQhUhIe04sjU
+GET http://127.0.0.1:8000/project/issue/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI0MTE2LCJpYXQiOjE3MTk4Mzc3MTYsImp0aSI6Ijk3Yjg1NTM1YWM1ZjQ0NjM4NGIyNzdkMDA2NWFjMTY4IiwidXNlcl9pZCI6MX0.yJ89j1y7cWrhZnqfu4isFlShDjj1S4nze7_0Ap1mY1Q
 
 ### ============================== OK!
 PUT http://127.0.0.1:8000/project/issue/1/
@@ -202,21 +202,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 ### ===================================== COMMENT ======================================
 ### Créer une comment (remplacer <access_token> par le token réel)
 POST http://127.0.0.1:8000/project/comment/create/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Nzg3NDgzLCJpYXQiOjE3MTk3MDEwODMsImp0aSI6ImE1NjkxMmU3ZjY5YzQ5MGY5YzZkMTViYjJjYTc1YTAzIiwidXNlcl9pZCI6MX0.N_JnSDHR5QuGRgZxtWa5yowcJV4l4PLn2EuN27iPp70
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI0MTE2LCJpYXQiOjE3MTk4Mzc3MTYsImp0aSI6Ijk3Yjg1NTM1YWM1ZjQ0NjM4NGIyNzdkMDA2NWFjMTY4IiwidXNlcl9pZCI6MX0.yJ89j1y7cWrhZnqfu4isFlShDjj1S4nze7_0Ap1mY1Q
 Content-Type: application/json
 
 {
-  "issue": 2,
+  "issue": 1,
   "body" : "test"
 }
 ### Récupérer la liste des comments (remplacer <access_token> par le token réel)
 GET http://127.0.0.1:8000/project/comment/all
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Nzg3NDgzLCJpYXQiOjE3MTk3MDEwODMsImp0aSI6ImE1NjkxMmU3ZjY5YzQ5MGY5YzZkMTViYjJjYTc1YTAzIiwidXNlcl9pZCI6MX0.N_JnSDHR5QuGRgZxtWa5yowcJV4l4PLn2EuN27iPp70
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI0MTE2LCJpYXQiOjE3MTk4Mzc3MTYsImp0aSI6Ijk3Yjg1NTM1YWM1ZjQ0NjM4NGIyNzdkMDA2NWFjMTY4IiwidXNlcl9pZCI6MX0.yJ89j1y7cWrhZnqfu4isFlShDjj1S4nze7_0Ap1mY1Q
 
 ### ============================== OK!
 ### Récupérer les détails d'une comment (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
-GET http://127.0.0.1:8000/project/comment/1/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5NDA4NTA3LCJpYXQiOjE3MTkzMjIxMDcsImp0aSI6IjA3ZGZkYzU5MjQ1ZjQxMDA5ODlmNzQ4MTk5MzU4YzQwIiwidXNlcl9pZCI6NH0.bZpLuYspRcJFV_VUStnVTVkeoqFqF9l-ny9Il_iPXQE
+GET http://127.0.0.1:8000/project/comment/2/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5OTI0MTE2LCJpYXQiOjE3MTk4Mzc3MTYsImp0aSI6Ijk3Yjg1NTM1YWM1ZjQ0NjM4NGIyNzdkMDA2NWFjMTY4IiwidXNlcl9pZCI6MX0.yJ89j1y7cWrhZnqfu4isFlShDjj1S4nze7_0Ap1mY1Q
 ### ============================== OK!
 ### Mettre à jour une comment (remplacer <access_token> par le token réel et <issue_id> par l'ID de l'issue)
 PATCH http://127.0.0.1:8000/project/comment/1/

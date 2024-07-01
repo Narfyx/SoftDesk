@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import User
 from .permissions import IsOwner
-from .serializers import UserSerializer
+from .serializers import UserSerializer, ShowAllUsersSerializer
 
 
 class UserCreate(generics.CreateAPIView):
@@ -18,7 +18,7 @@ class UserCreate(generics.CreateAPIView):
 class ShowAllUsers(viewsets.ModelViewSet):
     queryset = User.objects.all()
     permission_classes = [AllowAny]
-    serializer_class = UserSerializer
+    serializer_class = ShowAllUsersSerializer
 
 
 class MyTokenObtainPairView(TokenObtainPairView):

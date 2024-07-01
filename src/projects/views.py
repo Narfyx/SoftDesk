@@ -17,6 +17,9 @@ from .serializers import (
     ContributorSerializer,
     IssueSerializer,
     ProjectSerializer,
+    ShowAllProjectsSerializer,
+    ShowAllIssueSerializer,
+    ShowAllCommentSerializer,
 )
 
 
@@ -31,7 +34,7 @@ class ProjectCreate(generics.CreateAPIView):
 
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    serializer_class = ShowAllProjectsSerializer
     permission_classes = [IsAuthenticated]
 
 
@@ -147,7 +150,8 @@ class IssueListCreate(generics.ListCreateAPIView):
 
 class IssueViewSet(viewsets.ModelViewSet):
     queryset = Issue.objects.all()
-    serializer_class = IssueSerializer
+    serializer_class = ShowAllIssueSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class IssueDetail(APIView):
@@ -245,7 +249,8 @@ class CommentCreate(generics.ListCreateAPIView):
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
+    serializer_class = ShowAllCommentSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
